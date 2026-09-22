@@ -111,7 +111,34 @@ iPhone 17 วาดแผนที่ไม่เป็น รูปจาก 17
 
 ---
 
-## วิธีใช้
+
+## ใช้กับ AI agent (Claude Code / Claude Desktop)
+
+มี skill ให้ agent จัดการให้ได้เลย ไม่ต้องจำคำสั่ง
+
+```bash
+mkdir -p ~/.claude/skills/texture-styles
+cp -r skill/SKILL.md tools ~/.claude/skills/texture-styles/
+swiftc -O ~/.claude/skills/texture-styles/tools/gen/genmattes.swift \
+       -o ~/.claude/skills/texture-styles/tools/gen/genmattes
+```
+
+แล้วบอก agent ว่า *"ใส่ Texture ให้รูปนี้หน่อย"* หรือ *"ทำทั้งโฟลเดอร์"*
+agent จะตรวจไฟล์ให้ก่อน บอกว่าไฟล์ไหนใช้ไม่ได้เพราะอะไร แล้วค่อยประมวลผล
+
+ใช้เองผ่าน command line ก็ได้:
+
+```bash
+python3 tools/texture_cli.py check  photo.HEIC     # ตรวจอย่างเดียว
+python3 tools/texture_cli.py inject photo.HEIC     # ตรวจแล้วทำเลย
+python3 tools/texture_cli.py inject photo.HEIC --json   # output แบบ machine-readable
+```
+
+exit code: `0` สำเร็จ · `2` ไฟล์ใช้ไม่ได้ · `3` ประมวลผลพลาด · `4` ขาด prerequisite
+
+---
+
+## วิธีใช้ (เว็บแอพ)
 
 **1. ติดตั้ง (ครั้งเดียว)**
 

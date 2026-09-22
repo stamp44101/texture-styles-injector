@@ -171,8 +171,9 @@ def main(target, out, verbose=True, log=None):
         if r.returncode != 0:
             raise SystemExit(f"genmattes failed:\n{r.stderr.decode()[:800]}")
         for line in r.stderr.decode().splitlines():
-            if line.strip().startswith('semantic') or line.startswith('faces'):
-                log("   "+line.strip())
+            t=line.strip()
+            if t.startswith('semantic') or t.startswith('faces'):
+                log("   "+t)
 
         encoded={}
         for m in MATTES:
