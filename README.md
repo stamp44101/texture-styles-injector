@@ -54,6 +54,20 @@ iPhone 17 วาดแผนที่ไม่เป็น รูปจาก 17
 
 ---
 
+## ผลจริง
+
+รูปถ่ายด้วย **iPhone 17 Pro Max** ผ่านเครื่องมือนี้ แล้วเปิดใน Photos:
+
+![Info — ไฟล์จาก iPhone 17 Pro Max](docs/img/01-info.png)
+
+ไฟล์ `texture_IMG_0795` ยังเป็น HEIF จาก iPhone 17 Pro Max ขนาดเดิม 4284 × 5712
+
+![แท็บ TEXTURE ขึ้นครบ](docs/img/02-texture.png)
+
+แท็บ **TEXTURE** ขึ้นครบ — Soft Skin / Glow / Film / Grain
+
+---
+
 ## ✅ ยืนยันแล้วว่าใช้ได้
 
 ทดสอบบน **iPhone 17 Pro Max + iOS 27** เมื่อ 22 ก.ย. 2026 — ไฟล์ที่ผ่าน

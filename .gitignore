@@ -6,7 +6,7 @@
 *.jpg
 *.jpeg
 *.png
-!docs/*.png
+!docs/**/*.png
 
 # build output
 tools/gen/genmattes
