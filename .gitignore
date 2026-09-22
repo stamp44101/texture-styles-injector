@@ -1,0 +1,15 @@
+# never commit photos — they carry GPS and faces
+*.HEIC
+*.heic
+*.HEIF
+*.heif
+*.jpg
+*.jpeg
+*.png
+!docs/*.png
+
+# build output
+tools/gen/genmattes
+__pycache__/
+*.pyc
+.DS_Store
