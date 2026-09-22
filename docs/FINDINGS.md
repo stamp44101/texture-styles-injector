@@ -3,6 +3,10 @@
 Reverse-engineering notes on how Photos gates Photographic Styles 3 (Texture).
 All results are from device testing on iPhone 17 Pro Max / iOS 27, September 2026.
 
+**Status: confirmed working.** Both approaches produce a working TEXTURE tab on a
+17 Pro Max — transplanting real iPhone 18 mattes, and generating mattes locally
+from the target photo via macOS Vision. The latter is what the shipped tool does.
+
 ## The two metadata items
 
 Apple ships Photographic Styles data in HEIF items of type `uri `.
@@ -144,3 +148,22 @@ Every output was checked with:
 - decoded PNG hash comparison before/after injection
 - iref preservation (gain map and tmap survive)
 - visual inspection of decoded mattes — this is what caught the y-flip bug
+
+
+## Locally generated mattes
+
+The shipped tool does not transplant a donor's mattes. It generates them from
+the target photo with `VNGeneratePersonSegmentationRequest` (accurate) and
+`VNDetectFaceLandmarksRequest`, encodes each as a mono HEVC still, and injects
+them at a resolution matching the target's own aspect ratio.
+
+Confirmed on device: a 17 Pro Max photo processed this way shows the full
+TEXTURE tab — Soft Skin, Glow, Film, Grain.
+
+Note on subject matter: Film and Grain operate on the whole frame and work on
+any photo, including ones with no people. Soft Skin is matte-driven, so it needs
+a person in the shot to have a visible effect.
+
+Vision has no landmark for glasses, tattoos, ears or hands, so those four mattes
+are emitted blank. Apple's own files carry near-empty mattes for several of
+these too (156 bytes), so Photos evidently tolerates them.

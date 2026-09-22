@@ -54,15 +54,14 @@ iPhone 17 วาดแผนที่ไม่เป็น รูปจาก 17
 
 ---
 
-## ⚠️ อ่านก่อนลอง
+## ✅ ยืนยันแล้วว่าใช้ได้
 
-**วิธีนี้ยังไม่มีใครยืนยันว่าได้ผล**
+ทดสอบบน **iPhone 17 Pro Max + iOS 27** เมื่อ 22 ก.ย. 2026 — ไฟล์ที่ผ่าน
+เครื่องมือนี้ (ซึ่งวาด matte เองจากรูป ไม่ได้ยืมจากรูป iPhone 18)
+แสดงแท็บ TEXTURE ครบ: SOFT SKIN / GLOW / FILM / GRAIN
 
-ที่พิสูจน์แล้วคือการ *ยืมแผนที่จากรูป iPhone 18 จริง* มาใส่ — อันนั้นใช้ได้แน่นอน
-แต่การ *วาดแผนที่เองจากรูปของคุณ* ซึ่งคือสิ่งที่เครื่องมือนี้ทำ
-**ยังไม่ได้ทดสอบบนมือถือจริง** อาจได้ผลหรือไม่ได้ผลก็ได้
-
-ถ้าลองแล้วได้ผล (หรือไม่ได้ผล) เปิด issue มาบอกได้ครับ
+**หมายเหตุเรื่องรูปที่ไม่มีคน** — FILM กับ GRAIN ทำงานทั้งภาพ จึงเห็นผลได้เลย
+ส่วน SOFT SKIN ต้องมีคนในเฟรมถึงจะมีผล เพราะมันปรับเฉพาะผิว
 
 ---
 
@@ -147,7 +146,6 @@ python3 server.py
 
 ## ข้อจำกัด
 
-- **ยังไม่ยืนยันว่าได้ผล** (ดูหัวข้อเตือนข้างบน)
 - ระบบของ Mac วาดได้แค่ คน / ใบหน้า / ปาก / จมูก / คิ้ว
   ส่วน **แว่น / รอยสัก / หู / มือ** วาดไม่ได้ เป็นค่าว่าง
 - ยังแยกผิวออกจากเสื้อผ้าไม่ได้ ใช้เงาคนทั้งตัวแทน
@@ -212,8 +210,10 @@ Faking the EXIF model string to "iPhone 18 Pro Max" does nothing — tested.
 This tool generates mattes **from your own photo** using macOS Vision, so the
 masks actually line up, then injects them without re-encoding a single pixel.
 
-> ⚠️ **Not yet confirmed to work.** Transplanting real iPhone 18 mattes is proven;
-> generating them locally is not yet verified on a device. Reports welcome.
+> ✅ **Confirmed working.** Verified on iPhone 17 Pro Max / iOS 27 with mattes
+> generated locally from the user's own photo — the full TEXTURE tab appears
+> (Soft Skin / Glow / Film / Grain). Film and Grain apply to the whole frame, so
+> they work on any photo; Soft Skin needs a person in the shot.
 
 **Requires macOS 12+, ffmpeg, Xcode CLT.** Mac only — it uses Apple's Vision
 framework, which can't be hosted on a server.
